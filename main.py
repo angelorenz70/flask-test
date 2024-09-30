@@ -14,6 +14,11 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello World'
 
+
+@app.route('/params/<param1>/<param2>', methods=['GET'])
+def get_params(param1, param2):
+    return f"Received parameters: param1={param1}, param2={param2}"
+
 # main driver function
 if __name__ == '__main__':
 

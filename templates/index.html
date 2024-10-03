@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Camera Example</title>
+<style>
+  #video {
+    width: 100%;
+    max-width: 640px;
+    margin: auto;
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <h1>Open Camera Example</h1>
+  <video id="video" autoplay></video>
+
+  <script>
+    // Access the camera and stream video to the video element
+    async function openCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const videoElement = document.getElementById('video');
+        videoElement.srcObject = stream;
+      } catch (error) {
+        console.error('Error accessing the camera:', error);
+      }
+    }
+
+    // Call openCamera() when the page loads
+    document.addEventListener('DOMContentLoaded', openCamera);
+  </script>
+</body>
+</html>
